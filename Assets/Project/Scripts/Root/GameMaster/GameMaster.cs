@@ -7,14 +7,15 @@ using UnityEngine;
 
 namespace Scripts.Root
 {
-    public class GameMaster : MonoBehaviour
+    public sealed class GameMaster : MonoBehaviour
     {
         [SerializeField] private GameRoot _gameRoot;
+
+        
 
         [Space(5)]
         [SerializeField] private bool _services;
         [SerializeField] private List<ServiceFormular> _serviceList;
-
 
         [Space(5)]
         [SerializeField] private bool _gameTasks;
@@ -91,11 +92,14 @@ namespace Scripts.Root
     [System.Serializable]
     public struct ServiceFormular
     {
-        [SerializeField] private GameObject _provider;
+        [SerializeField] private MonoBehaviour _provider;
         [SerializeField] private bool _isActive;
 
 
-        public object provider => _provider;
+        public MonoBehaviour provider => _provider;
         public bool isActive => _isActive;
     }
+
+
+    
 }

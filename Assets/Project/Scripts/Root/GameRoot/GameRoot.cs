@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using Scripts.RootServices.GameState;
 using Scripts.RootServices.MonoCash;
 using Scripts.RootServices.ServiceLocator;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace Scripts.Root
 {
-    public class GameRoot : MonoBehaviour
+    public sealed class GameRoot : MonoBehaviour
     {
         /// <summary>
         /// 
@@ -35,16 +36,16 @@ namespace Scripts.Root
 
         public void RemoveStateListener(IGameStateProvider listener) => _stateService.RemoveListener(listener);
 
-        [ContextMenu("Start game")]
+        [ContextMenu("Start game"),Button]
         public void OnStartGame() => _stateService.OnStartGame();
 
-        [ContextMenu("Stop game")]
+        [ContextMenu("Stop game"),Button]
         public void OnStopGame() => _stateService.OnStopGame();
 
-        [ContextMenu("Pause")]
+        [ContextMenu("Pause"),Button]
         public void OnPauseGame() => _stateService.OnPauseGame();
 
-        [ContextMenu("Resume")]
+        [ContextMenu("Resume"),Button]
         public void OnResumeGame() => _stateService.OnResumeGame();
 
         #endregion
